@@ -1,0 +1,45 @@
+// calculo salario.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "conio.h"
+#include <iostream>
+
+using namespace std;
+
+float CalculoSalarioNeto (float SalarioBruto);
+
+void main ()
+{
+	float SalarioBruto, SalarioNeto, n, promedio, SalarioMinimo=1400, s=0;
+	do{
+	cout<<"ingrese el numero de empleados:    ";
+	cin>>n;
+	}while (n<=0);
+
+	for(int i=1;i<=n;i++)
+	{
+		do{
+		cout<<"ingrese el salario bruto:    ";
+		cin>> SalarioBruto;
+		}while ((SalarioBruto<=1400)||(SalarioBruto<=0));
+		
+		if(SalarioBruto > 2*SalarioMinimo)
+			SalarioNeto = CalculoSalarioNeto(SalarioBruto);
+		else
+			SalarioNeto = SalarioBruto;
+		cout << "el salario neto es:    "<< SalarioNeto;
+		s = s + SalarioNeto;
+	}
+	promedio = s/n;
+	cout<<"el promedio es:   "<< promedio;
+	getch();
+}
+
+float CalculoSalarioNeto (float SalarioBruto)
+{
+	float x;
+
+	x = SalarioBruto - (SalarioBruto*0.121) - (SalarioBruto*0.13);
+	return x;
+}
